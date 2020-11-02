@@ -1,29 +1,52 @@
-export function createElement(tag, props, children = []) {
+import { resetStateIndex } from "./hooks";
+import { setCurrRenderingComponent } from "./state";
+
+export function createElement(component, props, children = []) {
   return {
-    tag,
+    component,
     props,
     children,
   };
 }
 
+function declareRendering(elem) {
+  setCurrRenderingComponent(elem);
+  resetStateIndex(0);
+}
+
 export function renderElem(elem) {
+  declareRendering(elem);
   // if elem is a sole string, we create a Text Node for the elem
   if (typeof elem === "string") {
     return document.createTextNode(elem);
   }
-
-  const newElem = document.createElement(elem.tag);
+  if (typeof elem.component === "function") {
+    const newNode = renderElem(elem.component(elem.props));
+    elem.__associatedNode = newNode;
+    return newNode;
+  }
+  const newNode = document.createElement(elem.component);
   for (const attr in elem.props) {
-    newElem[attr] = elem.props[attr];
+    newNode[attr] = elem.props[attr];
   }
 
   for (const child of elem.children) {
-    newElem.appendChild(renderElem(child));
+    newNode.appendChild(renderElem(child));
   }
-  return newElem;
+  elem.__associatedNode = newNode;
+  return newNode;
 }
 
 export function mount(root, mountNode) {
   mountNode.__elemTree = root;
   mountNode.append(renderElem(root));
+}
+
+export function renderSubTree(root) {
+  const newSubTree = renderElem(root);
+  const oldNode = root.__associatedNode;
+  console.log("renderSubTree -> oldNode", oldNode);
+
+  oldNode.parentNode.replaceChild(newSubTree, oldNode);
+  root.__associatedNode = newSubTree;
 }

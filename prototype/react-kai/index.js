@@ -1,7 +1,17 @@
 const { mount, createElement } = require("./lib/element");
+const { useState } = require("./lib/hooks");
 
 function App() {
-  return createElement("div", { style: "color: red" }, ["hello world"]);
+  const [counter, setCounter] = useState(0);
+  const handleClick = () => {
+    setCounter(counter + 1);
+  };
+
+  console.log(counter);
+  return createElement("div", { style: "color: red" }, [
+    createElement("span", {}, [`${counter}`]),
+    createElement("button", { onclick: handleClick }, "add"),
+  ]);
 }
 
-mount(App(), document.querySelector("#root"));
+mount(createElement(App, {}, []), document.querySelector("#root"));
