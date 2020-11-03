@@ -2,6 +2,7 @@ import { renderElem, rerender } from "./element";
 import { getCurrRenderingElem } from "./shared";
 
 let nextStateIndex = 0;
+let effects = [];
 
 export function resetStateIndex() {
   nextStateIndex = 0;
@@ -30,4 +31,11 @@ export function useState(initState) {
   return [stateMemory[nextStateIndex++], setState];
 }
 
-export function useEffect() {}
+export function useEffect(effect, deps) {
+  effects.push(effect);
+}
+
+export function runEffects() {
+  effects.forEach((effect) => effect());
+  effects = [];
+}

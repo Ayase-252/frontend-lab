@@ -1,4 +1,4 @@
-import { resetStateIndex } from "./hooks";
+import { resetStateIndex, runEffects } from "./hooks";
 import { setCurrRenderingElem } from "./shared";
 import { replaceSelfWith } from "./utils/dom";
 
@@ -41,6 +41,7 @@ export function renderElem(elem) {
 export function mount(root, mountNode) {
   mountNode.__elemTree = root;
   mountNode.append(renderElem(root));
+  runEffects();
 }
 
 export function rerender(root) {
