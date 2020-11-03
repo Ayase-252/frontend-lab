@@ -1,5 +1,5 @@
 import { resetStateIndex } from "./hooks";
-import { setCurrRenderingComponent } from "./state";
+import { setCurrRenderingElem } from "./shared";
 import { replaceSelfWith } from "./utils/dom";
 
 export function createElement(component, props, children = []) {
@@ -11,7 +11,7 @@ export function createElement(component, props, children = []) {
 }
 
 function declareRendering(elem) {
-  setCurrRenderingComponent(elem);
+  setCurrRenderingElem(elem);
   resetStateIndex(0);
 }
 
