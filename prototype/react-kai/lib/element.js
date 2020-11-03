@@ -1,5 +1,6 @@
 import { resetStateIndex } from "./hooks";
 import { setCurrRenderingComponent } from "./state";
+import { replaceSelfWith } from "./utils/dom";
 
 export function createElement(component, props, children = []) {
   return {
@@ -42,11 +43,8 @@ export function mount(root, mountNode) {
   mountNode.append(renderElem(root));
 }
 
-export function renderSubTree(root) {
-  const newSubTree = renderElem(root);
+export function rerender(root) {
   const oldNode = root.__associatedNode;
-  console.log("renderSubTree -> oldNode", oldNode);
-
-  oldNode.parentNode.replaceChild(newSubTree, oldNode);
-  root.__associatedNode = newSubTree;
+  const newNode = renderElem(root);
+  replaceSelfWith(oldNode, newNode);
 }

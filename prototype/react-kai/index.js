@@ -3,14 +3,18 @@ const { useState } = require("./lib/hooks");
 
 function App() {
   const [counter, setCounter] = useState(0);
-  const handleClick = () => {
+  const handleAdd = () => {
     setCounter(counter + 1);
   };
 
-  console.log(counter);
+  const handleDecrease = () => {
+    setCounter(counter - 1);
+  };
+
   return createElement("div", { style: "color: red" }, [
     createElement("span", {}, [`${counter}`]),
-    createElement("button", { onclick: handleClick }, "add"),
+    createElement("button", { onclick: handleAdd }, ["add"]),
+    createElement("button", { onclick: handleDecrease }, ["substract"]),
   ]);
 }
 

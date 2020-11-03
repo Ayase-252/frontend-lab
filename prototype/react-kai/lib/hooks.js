@@ -1,4 +1,4 @@
-import { renderElem, renderSubTree } from "./element";
+import { renderElem, rerender } from "./element";
 import { getCurrRenderingComponent } from "./state";
 
 let nextStateIndex = 0;
@@ -21,7 +21,7 @@ export function useState(initState) {
 
   function setState(newState) {
     stateMemory[stateIdx] = newState;
-    renderSubTree(currRenderingComp);
+    rerender(currRenderingComp);
   }
   return [stateMemory[nextStateIndex++], setState];
 }
