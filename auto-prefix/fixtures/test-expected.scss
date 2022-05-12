@@ -1,0 +1,28 @@
+.test-hello .test-b {
+  .test-nested {
+    &.test-modifier {
+    }
+  }
+}
+
+.test-interpolation-#{name} {
+
+}
+
+.test-#{pureInterpolation} {
+
+}
+
+.test-#{name}-item {
+
+}
+
+@mixin include-class {
+  & .test-included-class {
+
+  }
+}
+
+.test-user-class {
+  @include include-class();
+}

@@ -1,0 +1,28 @@
+.hello .b {
+  .nested {
+    &.modifier {
+    }
+  }
+}
+
+.interpolation-#{name} {
+
+}
+
+.#{pureInterpolation} {
+
+}
+
+.#{name}-item {
+
+}
+
+@mixin include-class {
+  & .included-class {
+
+  }
+}
+
+.user-class {
+  @include include-class();
+}

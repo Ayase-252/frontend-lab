@@ -1,0 +1,17 @@
+{
+  "name": "auto-prefix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gonzales-pe": "^4.3.0",
+    "jest": "^28.1.0",
+    "scss-parser": "^1.0.5"
+  }
+}
