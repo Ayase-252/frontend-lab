@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .small-window-1 {
+      width: 300px;
+      height: 300px;
+      
+      position: fixed;
+      bottom: 400px;
+      right: 0px;
+    }
+
+    .small-window-2 {
+      width: 300px;
+      height: 300px;
+      
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+    }
+
+    .base {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <iframe class="base" src="./center.html"></iframe>
+  <iframe class="small-window-1" src="./consumer.html"></iframe>
+  <iframe class="small-window-2" src="./consumer.html"></iframe>
+</body>
+</html>

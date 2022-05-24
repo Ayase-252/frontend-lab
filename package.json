@@ -1,0 +1,23 @@
+{
+  "name": "frontend-lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayase-252/frontend-lab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayase-252/frontend-lab/issues"
+  },
+  "homepage": "https://github.com/Ayase-252/frontend-lab#readme",
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  }
+}
